@@ -219,8 +219,22 @@ function startQuiz(){
     score= 0;
     nextButton.innerHTML = "Next";
     showQuestion();
+    localStorage.setltem ("currentQuestion", 0);
+    window.location.href = "quiz.html";
 }
 
+        function loadQuestion() {
+const currentQuestion = localStorage.get/tem ("currentQuestion");
+const question = questions [currentQuestion];
+
+        }
+
+        function checkAnswer() {
+const currentQuestion = localStorage.get|tem"currentQuestion");
+const selectedOption =
+document.querySelector('input[name="option"]:checked');
+        }
+        
 function showQuestion(){
     resetState();
     let currentQuestion = questions[currentQuestionIndex];
