@@ -214,7 +214,7 @@ const questionElement = document.getElementById("question");
         let score;
 
         function startQuiz() {
-            loadProgress(); // Load quiz progress from local storage
+           // Load quiz progress from local storage
             showQuestion();
         }
 
@@ -258,7 +258,7 @@ const questionElement = document.getElementById("question");
                 button.disabled = true;
             });
             nextButton.style.display = "block";
-            saveProgress(); // Save quiz progress to local storage
+          // Save quiz progress to local storage
         }
 
         function showScore() {
