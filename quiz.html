@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title> Fun Quiz! </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="C:\Users\63945\Documents\School\ICT - Interactive Quiz\430277810_902840968299935_105660314089022908_n.jpg" type="image/png">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Franklin Gothic Medium', sans-serif;
+    box-sizing: border-box;
+}
+body {
+    background-color: pink;
+    }
+    .app{
+        background-color: white;
+        width: 90%;
+        max-width: 600px;
+        margin: 100px auto 0;
+        border-radius: 10px;
+        padding: 30px;
+    }
+
+    .app h1 {
+        font-size: 25px;
+        color: rgb(182, 87, 182);
+        font-weight: 600px;
+        border-bottom: 5px rgb(95, 216, 95);
+        padding-bottom: 20px;
+    }
+
+    .quiz{
+        padding: 20px 0;
+    }
+
+    .quiz h2 {
+        font-size: 20px;
+        color: black;
+        font-weight: 600px;
+    }
+
+    .btn {
+        background: white;
+        color: black;
+        font-weight: 500px;
+        width: 100%;
+        border: 1px solid black;
+        padding: 10px;
+        margin: 10px 0;
+        text-align: left;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .btn:hover:not([disabled]) {
+        background: #222;
+        color: white;
+    }
+
+    .btn:disabled {
+        cursor: no-drop;
+    }
+
+    #next-btn{
+        background: rgb(65, 139, 81);
+        color: white;
+        font-weight: 500px;
+        width: 150px;
+        border: 0;
+        padding: 10px;
+        margin: 20px auto 0;
+        border-radius: 4px;
+        cursor: pointer;
+        display: none;
+    }
+
+    .correct {
+        background: rgb(111, 216, 111);
+    }
+
+    .incorrect {
+        background: rgb(223, 134, 134)
+    }
+    </style>
+</head>
+<body>
+    <script>alert("Welcome to our Fun Quiz!");</script>
+    <div class="app">
+        <h1> Fun Quiz!</h1>
+        <div class="quiz">
+            <h2 id="question"> Question goes here </h2>
+            <div id="answer-buttons">
+                <button class="btn"> Answer 1 </button>
+                <button class="btn"> Answer 2 </button>
+                <button class="btn"> Answer 3 </button>
+                <button class="btn"> Answer 4 </button>
+            </div>
+            <button id="next-btn"> Next </button>
+        </div>
+    </div>
+    <script>
+        const questions = [
+    {
+        question: "Who is our Sunshine?",
+        answers: [
+            { text: "Chico Lachowski", correct: false },
+            { text: "The Rock", correct: false },
+            { text: "Lebron James", correct: true },
+            { text: "Dwayne Johnson", correct: false },
+
+        ]
+    },
+    {
+        question: "COMPLETE THE LYRICS: Hindi ko alam bakit ba ___________",
+        answers: [
+            { text: "sumasakit buhok ko", correct: false },
+            { text: "nagkakaganto", correct: true },
+            { text: "circle ang lemon square", correct: false },
+            { text: "ako nakatulog", correct: false },
+
+        ]
+    },
+    {
+        question: "Sino si Manny Pacquiao",
+        answers: [
+            { text: "Cutie patootie", correct: true },
+            { text: "Boxer", correct: false },
+            { text: "Politician", correct: false },
+            { text: "Dancer", correct: false },
+
+        ]
+    },
+    {
+        question: "God is _____ all the time, All the time God is _____",
+        answers: [
+            { text: "Loving", correct: false },
+            { text: "Marvelous", correct: false },
+            { text: "Great", correct: false },
+            { text: "Good", correct: true },
+
+        ]
+    },
+    {
+        question: "Who is the STRONGEST Sorcerer in History",
+        answers: [
+            { text: "Inumaki", correct: false },
+            { text: "John Joseph Quibrantos", correct: true },
+            { text: "Sukuna", correct: false },
+            { text: "Gojo", correct: false },
+
+        ]
+    },
+    {
+        question: "Who has the longest mewing streak record (2 Years)",
+        answers: [
+            { text: "Russel Ramos", correct: false },
+            { text: "Milvincent Amugauan", correct: false },
+            { text: "Jj Quibrantos", correct: false },
+            { text: "Lex Basol", correct: true },
+
+        ]
+    },
+    {
+        question: "Who is the main vocalist in Diabols Alpha Wolf Club",
+        answers: [
+            { text: "Dominic Dysangco", correct: false },
+            { text: "Jj Quibrantos", correct: true },
+            { text: "Mavis Victoria", correct: false },
+            { text: "Arison Tolentino", correct: false },
+
+        ]
+    },
+    {
+        question: "Who is the HOTTEST person in Sci-Hi",
+        answers: [
+            { text: "Seong Teh Antopina", correct: false },
+            { text: "Milvincent Amugauan", correct: false },
+            { text: "Dominic Dysangco", correct: false },
+            { text: "Sean Sanopo", correct: true },
+        ]
+    },
+    {
+        question: "Who is the 'Manny Pacman' of 8-Diamond",
+        answers: [
+            { text: "Jj Quibrantos", correct: false },
+            { text: "Seong Teh Antopina", correct: true },
+            { text: "Arison Tolentino", correct: false },
+            { text: "Renz Quiros", correct: false },
+
+        ]
+    },
+    {
+        question: "What is the name of Diamond's SUPREME COURT",
+        answers: [
+            { text: "PEDIA", correct: false },
+            { text: "D.I.A", correct: false },
+            { text: "C.U.R.T.A", correct: true },
+            { text: "DIAPE", correct: false },
+
+        ]
+    }
+];
+
+const questionElement = document.getElementById("question");
+        const answerButtons = document.getElementById("answer-buttons");
+        const nextButton = document.getElementById("next-btn");
+
+        let currentQuestionIndex;
+        let score;
+
+        function startQuiz() {
+            loadProgress(); // Load quiz progress from local storage
+            showQuestion();
+        }
+
+        function showQuestion() {
+            resetState();
+            const currentQuestion = questions[currentQuestionIndex];
+            questionElement.innerText = currentQuestion.question;
+
+            currentQuestion.answers.forEach(answer => {
+                const button = document.createElement("button");
+                button.innerText = answer.text;
+                button.classList.add("btn");
+                answerButtons.appendChild(button);
+                if (answer.correct) {
+                    button.dataset.correct = answer.correct;
+                }
+                button.addEventListener("click", selectAnswer);
+            });
+        }
+
+        function resetState() {
+            while (answerButtons.firstChild) {
+                answerButtons.removeChild(answerButtons.firstChild);
+            }
+            nextButton.style.display = "none";
+        }
+
+        function selectAnswer(e) {
+            const selectedBtn = e.target;
+            const isCorrect = selectedBtn.dataset.correct === "true";
+            if (isCorrect) {
+                selectedBtn.classList.add("correct");
+                score++;
+            } else {
+                selectedBtn.classList.add("incorrect");
+            }
+            Array.from(answerButtons.children).forEach(button => {
+                if (button.dataset.correct === "true") {
+                    button.classList.add("correct");
+                }
+                button.disabled = true;
+            });
+            nextButton.style.display = "block";
+            saveProgress(); // Save quiz progress to local storage
+        }
+
+        function showScore() {
+            resetState();
+            questionElement.innerText = `You scored ${score} out of ${questions.length}!`;
+            nextButton.innerText = "Play Again";
+            nextButton.style.display = "block";
+        }
+
+        function handleNextButton() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion();
+            } else {
+                showScore();
+            }
+        }
+
+        function loadProgress() {
+            const savedIndex = localStorage.getItem("currentQuestionIndex");
+            const savedScore = localStorage.getItem("score");
+
+            if (savedIndex !== null && savedScore !== null) {
+                currentQuestionIndex = parseInt(savedIndex);
+                score = parseInt(savedScore);
+            } else {
+                currentQuestionIndex = 0;
+                score = 0;
+            }
+        }
+
+        function saveProgress() {
+            localStorage.setItem("currentQuestionIndex", currentQuestionIndex.toString());
+            localStorage.setItem("score", score.toString());
+        }
+
+        nextButton.addEventListener("click", () => {
+            if (currentQuestionIndex < questions.length) {
+                handleNextButton();
+            } else {
+                startQuiz();
+            }
+        });
+
+        answerButtons.addEventListener("click", (e) => {
+            if (e.target.matches("button")) {
+                selectAnswer(e);
+            }
+        });
+
+        startQuiz();
+    </script>
+</body>
+</html>
